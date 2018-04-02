@@ -202,7 +202,7 @@ function! s:setup_cleared_syntax() "{{{ highlight groups that get cleared
   hi def VimwikiUnderline gui=underline
   if g:vimwiki_hl_headers == 1
     for i in range(1,6)
-      execute 'hi def VimwikiHeader'.i.' guibg=bg guifg='.g:vimwiki_hcolor_guifg_{&bg}[i-1].' gui=bold ctermfg='.g:vimwiki_hcolor_ctermfg_{&bg}[i-1].' term=bold cterm=bold' 
+      execute 'hi def VimwikiHeader'.i.' guibg=bg guifg='.g:vimwiki_hcolor_guifg_{&bg}[i-1].' gui=bold ctermfg='.g:vimwiki_hcolor_ctermfg_{&bg}[i-1].' term=bold cterm=bold'
     endfor
   endif
 endfunction "}}}
@@ -252,7 +252,7 @@ endfunction "}}}
 function! VimwikiSet(option, value, ...) "{{{
   let idx = a:0 == 0 ? g:vimwiki_current_idx : a:1
 
-  if has_key(s:vimwiki_defaults, a:option) || 
+  if has_key(s:vimwiki_defaults, a:option) ||
         \ has_key(g:vimwiki_list[idx], a:option)
     let g:vimwiki_list[idx][a:option] = a:value
   elseif exists('b:vimwiki_list')
@@ -386,9 +386,9 @@ call s:default('html_header_numbering_sym', '')
 call s:default('conceallevel', 2)
 call s:default('url_maxsave', 15)
 
-call s:default('diary_months', 
+call s:default('diary_months',
       \ {
-      \ 1: 'January', 2: 'February', 3: 'March', 
+      \ 1: 'January', 2: 'February', 3: 'March',
       \ 4: 'April', 5: 'May', 6: 'June',
       \ 7: 'July', 8: 'August', 9: 'September',
       \ 10: 'October', 11: 'November', 12: 'December'
@@ -410,8 +410,8 @@ call s:default('web_schemes1', 'http,https,file,ftp,gopher,telnet,nntp,ldap,'.
 call s:default('web_schemes2', 'mailto,news,xmpp,sip,sips,doi,urn,tel')
 
 let s:rxSchemes = '\%('.
-      \ join(split(g:vimwiki_schemes, '\s*,\s*'), '\|').'\|'. 
-      \ join(split(g:vimwiki_web_schemes1, '\s*,\s*'), '\|').'\|'. 
+      \ join(split(g:vimwiki_schemes, '\s*,\s*'), '\|').'\|'.
+      \ join(split(g:vimwiki_web_schemes1, '\s*,\s*'), '\|').'\|'.
       \ join(split(g:vimwiki_web_schemes2, '\s*,\s*'), '\|').
       \ '\)'
 
@@ -478,42 +478,42 @@ if !hasmapto('<Plug>VimwikiIndex')
 endif
 nnoremap <unique><script> <Plug>VimwikiIndex :VimwikiIndex<CR>
 
-if !hasmapto('<Plug>VimwikiTabIndex')
-  exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'t <Plug>VimwikiTabIndex'
-endif
-nnoremap <unique><script> <Plug>VimwikiTabIndex :VimwikiTabIndex<CR>
+" if !hasmapto('<Plug>VimwikiTabIndex')
+"   exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'t <Plug>VimwikiTabIndex'
+" endif
+" nnoremap <unique><script> <Plug>VimwikiTabIndex :VimwikiTabIndex<CR>
 
-if !hasmapto('<Plug>VimwikiUISelect')
-  exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'s <Plug>VimwikiUISelect'
-endif
-nnoremap <unique><script> <Plug>VimwikiUISelect :VimwikiUISelect<CR>
+" if !hasmapto('<Plug>VimwikiUISelect')
+"   exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'s <Plug>VimwikiUISelect'
+" endif
+" nnoremap <unique><script> <Plug>VimwikiUISelect :VimwikiUISelect<CR>
 
-if !hasmapto('<Plug>VimwikiDiaryIndex')
-  exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'i <Plug>VimwikiDiaryIndex'
-endif
-nnoremap <unique><script> <Plug>VimwikiDiaryIndex :VimwikiDiaryIndex<CR>
+" if !hasmapto('<Plug>VimwikiDiaryIndex')
+"   exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'i <Plug>VimwikiDiaryIndex'
+" endif
+" nnoremap <unique><script> <Plug>VimwikiDiaryIndex :VimwikiDiaryIndex<CR>
 
-if !hasmapto('<Plug>VimwikiDiaryGenerateLinks')
-  exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'<Leader>i <Plug>VimwikiDiaryGenerateLinks'
-endif
-nnoremap <unique><script> <Plug>VimwikiDiaryGenerateLinks :VimwikiDiaryGenerateLinks<CR>
+" if !hasmapto('<Plug>VimwikiDiaryGenerateLinks')
+"   exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'<Leader>i <Plug>VimwikiDiaryGenerateLinks'
+" endif
+" nnoremap <unique><script> <Plug>VimwikiDiaryGenerateLinks :VimwikiDiaryGenerateLinks<CR>
 
-if !hasmapto('<Plug>VimwikiMakeDiaryNote')
-  exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'<Leader>w <Plug>VimwikiMakeDiaryNote'
-endif
-nnoremap <unique><script> <Plug>VimwikiMakeDiaryNote :VimwikiMakeDiaryNote<CR>
+" if !hasmapto('<Plug>VimwikiMakeDiaryNote')
+"   exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'<Leader>w <Plug>VimwikiMakeDiaryNote'
+" endif
+" nnoremap <unique><script> <Plug>VimwikiMakeDiaryNote :VimwikiMakeDiaryNote<CR>
 
-if !hasmapto('<Plug>VimwikiTabMakeDiaryNote')
-  exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'<Leader>t <Plug>VimwikiTabMakeDiaryNote'
-endif
-nnoremap <unique><script> <Plug>VimwikiTabMakeDiaryNote
-      \ :VimwikiTabMakeDiaryNote<CR>
+" if !hasmapto('<Plug>VimwikiTabMakeDiaryNote')
+"   exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'<Leader>t <Plug>VimwikiTabMakeDiaryNote'
+" endif
+" nnoremap <unique><script> <Plug>VimwikiTabMakeDiaryNote
+"       \ :VimwikiTabMakeDiaryNote<CR>
 
-if !hasmapto('<Plug>VimwikiMakeYesterdayDiaryNote')
-  exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'<Leader>y <Plug>VimwikiMakeYesterdayDiaryNote'
-endif
-nnoremap <unique><script> <Plug>VimwikiMakeYesterdayDiaryNote
-      \ :VimwikiMakeYesterdayDiaryNote<CR>
+" if !hasmapto('<Plug>VimwikiMakeYesterdayDiaryNote')
+"   exe 'nmap <silent><unique> '.g:vimwiki_map_prefix.'<Leader>y <Plug>VimwikiMakeYesterdayDiaryNote'
+" endif
+" nnoremap <unique><script> <Plug>VimwikiMakeYesterdayDiaryNote
+"       \ :VimwikiMakeYesterdayDiaryNote<CR>
 
 "}}}
 
